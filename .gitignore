@@ -11,3 +11,5 @@ npm-debug.log
 dist
 
 .contentful.json
+
+.DS_Store
