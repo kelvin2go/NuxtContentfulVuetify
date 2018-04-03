@@ -98,7 +98,7 @@
         scroll: 0,
         items: [
           { icon: 'home', title: 'Home', to: '/' },
-          { icon: 'view_module', title: 'Posts example', to: '/posts' },
+          { icon: 'library_books', title: 'Posts', to: '/posts' },
           { icon: 'view_module', title: 'Posts example', to: '/posts' },
         ],
         itemsExt: [
