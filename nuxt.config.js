@@ -1,6 +1,7 @@
 const {getConfigForKeys} = require('./lib/config.js')
 const ctfConfig = getConfigForKeys([
   'CTF_BLOG_POST_TYPE_ID',
+  'CTF_PERSON_TYPE_ID',
   'CTF_SPACE_ID',
   'CTF_CDA_ACCESS_TOKEN',
   'CTF_CMA_ACCESS_TOKEN',
@@ -56,6 +57,7 @@ module.exports = {
   plugins: [
     '~/plugins/contentful',
     '~/plugins/vuetify',
+    '~/plugins/fontawesome',
   ],
   generate: {
     routes () {
@@ -71,7 +73,7 @@ module.exports = {
       .then(([entries, postType]) => {
         return [
           // map entries to URLs
-          ...entries.items.map(entry => `/blog/${entry.fields.slug}`),
+          ...entries.items.map(entry => `/posts/${entry.fields.slug}`),
           // map all possible tags to URLs
           ...postType.fields.find(field => field.id === 'tags').items.validations[0].in.map(tag => `/tags/${tag}`)
         ]
@@ -87,6 +89,7 @@ module.exports = {
     CTF_CDA_ACCESS_TOKEN: ctfConfig.CTF_CDA_ACCESS_TOKEN,
     CTF_CMA_ACCESS_TOKEN: ctfConfig.CTF_CMA_ACCESS_TOKEN,
     CTF_PERSON_ID: ctfConfig.CTF_PERSON_ID,
-    CTF_BLOG_POST_TYPE_ID: ctfConfig.CTF_BLOG_POST_TYPE_ID
+    CTF_BLOG_POST_TYPE_ID: ctfConfig.CTF_BLOG_POST_TYPE_ID,
+    CTF_PERSON_TYPE_ID: ctfConfig.CTF_PERSON_TYPE_ID
   }
 }
