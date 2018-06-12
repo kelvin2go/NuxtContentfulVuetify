@@ -9,9 +9,9 @@
       >
         <v-flex xs12 sm4 class="my-3">
           <div class="text-xs-center">
-            <h2 class="headline">The best way to start developing</h2>
-            <span class="subheading">
-              Cras facilisis mi vitae nunc
+            <h2 class="banner-title">The best way to start developing</h2>
+            <span class="banner-subtitle">
+              Tech solution for the business
             </span>
           </div>
         </v-flex>
@@ -42,7 +42,7 @@
                     <img src="/img/vuetify-logo.svg" width="40" height="40"/>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
-                    <div class="headline">Material Design</div>
+                    <div class="headline">Vuetify</div>
                   </v-card-title>
                   <v-card-text>
                     Semantic Material Components
@@ -63,7 +63,8 @@
                   </v-card-title>
                   <v-card-text>
                     Contentful provides a content infrastructure that enables teams to power content in any digital product.
-                    nuxt + contentful have no harzzel on server content now.
+                    nuxt + contentful have no harzzel on server content now. Fast. Flexible. Future-proof. It's everything your CMS isn't.
+                    Developers work with the tools they love. Content creators work with the structure they need.
                     <v-card-text class="text-xs-center">
                       <v-btn color="error" href="https://www.contentful.com/developers/docs/javascript/tutorials/integrate-contentful-with-vue-and-nuxt/" target="_blank">Contentful</v-btn>
                     </v-card-text>
@@ -80,13 +81,17 @@
     </section>
     <section>
       <v-card>
-        <v-container
-          fluid
-          style="min-height: 0;"
-          grid-list-lg
-        >
+        <v-container fluid grid-list-md>
           <v-layout row wrap>
-            <v-flex xs12 sm6 offset-sm3 v-for="person in persons" :key="person.id">
+            <v-flex xs12 sm12 md12 class="my-3">
+              <div class="text-xs-center">
+                <h2 class="banner-title">TEAM</h2>
+                <span class="banner-subtitle">
+                  Get to know our amazing team here
+                </span>
+              </div>
+            </v-flex>
+            <v-flex xs6 md4 sm6 v-for="person in persons" :key="person.id">
               <PersonCard v-if="person" :person="person" />
             </v-flex>
           </v-layout>
@@ -135,7 +140,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped="">
 .padTop{
   padding-top: 456px;
 }
@@ -144,5 +149,12 @@ export default {
   .container {
     min-height: auto;
   }
+}
+.banner-title{
+  font-size: 36px;
+}
+.banner-subtitle{
+  padding-top: 10px;
+  font-size: 18px;
 }
 </style>
