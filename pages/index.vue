@@ -15,7 +15,6 @@
             </span>
           </div>
         </v-flex>
-
         <v-flex xs12 class="midContainer">
           <v-container grid-list-xl>
             <v-layout row wrap align-center>
@@ -91,7 +90,7 @@
                 </span>
               </div>
             </v-flex>
-            <v-flex xs6 md4 sm6 v-for="person in persons" :key="person.id">
+            <v-flex xs8 md6 sm6 v-for="person in persons" :key="person.id">
               <PersonCard v-if="person" :person="person" />
             </v-flex>
           </v-layout>
