@@ -1,7 +1,7 @@
 <template>
-  <v-card v-if="'fields' in person" width="220" height="500">
+  <v-card v-if="'fields' in person" width="300" height="450">
     <v-card-media
-      :src="person.fields.image.fields.file.url + '?fit=scale&w=220&h=220'"
+      :src="person.fields.image.fields.file.url + '?fit=scale'"
       height="220px"
       contain
     ></v-card-media>

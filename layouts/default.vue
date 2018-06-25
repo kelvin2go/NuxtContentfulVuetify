@@ -10,9 +10,9 @@
         <v-icon>menu</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-content>
+    <v-content class="main">
       <section v-if="$route.path == '/'">
-        <Parallax />
+        <Parallax  class="main"/>
         <nuxt />
       </section>
       <v-container v-else>
@@ -49,7 +49,8 @@
         <v-subheader>Externals</v-subheader>
         <v-list-tile avatar v-for="item in itemsExt" :key="item.title" :href="item.to" :target="item.target">
           <v-list-tile-avatar>
-            <v-icon v-html="item.icon"></v-icon>
+            <v-icon v-if="item.icon" v-html="item.icon"></v-icon>
+            <font-awesome-icon v-if="item.faIcon" :icon="['fab', item.faIcon]" size="2x"/>
           </v-list-tile-avatar>
           <v-list-tile-content>
             <v-list-tile-title v-html="item.title"></v-list-tile-title>
@@ -98,11 +99,11 @@
         scroll: 0,
         items: [
           { icon: 'home', title: 'Home', to: '/' },
-          { icon: 'library_books', title: 'Posts', to: '/posts' },
-          { icon: 'view_module', title: 'Posts example', to: '/posts' },
+          { icon: 'library_books', title: 'Blogs', to: '/posts' },
+          { icon: 'portrait', title: 'Showcases', to: '/showcases' },
         ],
         itemsExt: [
-          { icon: 'view_module', title: 'Kelvin Git', to: 'https://github.com/kelvin2go', target: '_blank' },
+          { faIcon: 'github', title: 'Kelvin Git', to: 'https://github.com/kelvin2go', target: '_blank' },
         ],
         miniVariant: false,
         right: true,
@@ -123,38 +124,51 @@
     },
     components: {
       Parallax,
-      ParallaxSub,
+      ParallaxSub
     }
   }
 </script>
 
 <style lang="scss" scoped>
-
-  a, a:link, a:visited {
-    color: #63b5f7;
-    text-decoration: none;
-    &#brand {
-      color: #fff;
-      border: 1px solid #fff;
-      padding: 4px;
+  #app {
+    .toolbar {
+      background: rgba(18, 21, 20, 0.2);
+      &.solid{
+        background: rgba(18, 21, 20, 0.85);
+      }
+      font-family: Raleway, Helvetica, Arial, sans-serif;
     }
-    .toolbar__title {
-      margin-left: 0px;
+    .main {
+      &.parallax {
+        position: absolute;
+        top: 0;
+      }
+      &.content {
+        background: #f4f7f6;
+      }
     }
-  }
-
-  .parallax{
-    position: absolute;
-    top: 0;
-  }
-
-
-
-  #app .toolbar {
-    background: rgba(18, 21, 20, 0.3);
-    &.solid{
-      background: rgba(18, 21, 20, 0.85);
+    a, a:link, a:visited {
+      color: #63b5f7;
+      text-decoration: none;
+      &#brand {
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 4px;
+      }
+      .toolbar__title {
+        margin-left: 0px;
+      }
     }
-    font-family: Raleway, Helvetica, Arial, sans-serif;
+
   }
+</style>
+
+<style lang="scss">
+body{
+  font-family: 'medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif';
+}
+.responsive {
+  width: 100%;
+  height: auto;
+}
 </style>
