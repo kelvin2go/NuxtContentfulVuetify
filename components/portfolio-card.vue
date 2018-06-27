@@ -1,10 +1,10 @@
 <template>
   <v-card raised :style="{ 'min-height': imageHeight + 'px' }">
-
     <v-card-title primary-title>
       <div class="bar">
         <h3>{{portfolio.fields.title}}</h3>
         <i class="bar-icon"></i>
+        <a :href="portfolio.fields.url" target="_blank"><v-icon class="pink--text">launch</v-icon> </a>
       </div>
       <img
         class="img"
@@ -14,7 +14,7 @@
       />
       <div class="card-content">
         <p>
-          <v-icon class="grey--text">work</v-icon> {{portfolio.fields.company}} <v-icon class="grey--text">date_range</v-icon>{{ portfolio.fields.date | getFullYear}}
+          <v-icon class="grey--text">work</v-icon> {{portfolio.fields.company}}  <v-icon class="grey--text">date_range</v-icon>{{ portfolio.fields.date | getFullYear}}
         </p>
         <div><VMarkdown :source="portfolio.fields.description"></VMarkdown></div>
       </div>
@@ -63,7 +63,6 @@
     components: {
       VMarkdown
     }
-
   }
 </script>
 
@@ -108,7 +107,16 @@
   }
   .card{
     width: 100%;
-
+    a {
+      text-decoration: none;
+    }
+    .bar a {
+      opacity: 0;
+      display: none;
+      top: 0;
+      right: 0;
+      position: absolute;
+    }
     .card__title {
       padding: 0;
           font-size: 15px;
@@ -141,11 +149,12 @@
         font-size: 22px !important;
       }
     }
-
+    .swiper-slide:hover &,
     &:hover {
       background: rgba(223, 235, 243, 0.7);
       .card-content,
-      .card__actions{
+      .card__actions,
+      .bar a {
         opacity: 1;
         display: block;
       }
@@ -164,7 +173,6 @@
         h3 {
           -webkit-transition: .45s ease-in-out;
           transition: .45s ease-in-out;
-
           font-size: 25px;
           padding-top: 27px;
         }

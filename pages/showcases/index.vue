@@ -149,6 +149,7 @@
       .swiper-pagination {
         width: 100% !important;
         top: 0;
+        height: 10px;
       }
     }
 

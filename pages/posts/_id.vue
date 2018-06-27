@@ -11,7 +11,6 @@
   export default {
     // `env` is available in the context object
     asyncData ({env, params}) {
-      console.log(params)
       return Promise.all([
         // client.getEntry( params.id )
         client.getEntries({
