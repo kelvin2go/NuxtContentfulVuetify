@@ -8,8 +8,16 @@ const ctfConfig = getConfigForKeys([
   'CTF_PERSON_ID',
   'CTF_PROTFOLIO_TYPE_ID'
 ])
-
+console.log(ctfConfig)
 console.log(process.env)
+
+const {createClient} = require('./plugins/contentful')
+const cdaClient = createClient(ctfConfig)
+const cmaContentful = require('contentful-management')
+const cmaClient = cmaContentful.createClient({
+  accessToken: ctfConfig.CTF_CMA_ACCESS_TOKEN
+})
+
 module.exports = {
   /*
   ** Headers of the page
@@ -69,16 +77,11 @@ module.exports = {
         cdaClient.getEntries({
           'content_type': ctfConfig.CTF_BLOG_POST_TYPE_ID
         }),
-        // get the blog post content type
-        cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
-          .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
       ])
       .then(([entries, postType]) => {
         return [
           // map entries to URLs
-          ...entries.items.map(entry => `/posts/${entry.fields.slug}`),
-          // map all possible tags to URLs
-          ...postType.fields.find(field => field.id === 'tags').items.validations[0].in.map(tag => `/tags/${tag}`)
+          ...entries.items.map(entry => `/posts/${entry.fields.id}`),
         ]
       })
     }

@@ -101,6 +101,7 @@
           { icon: 'home', title: 'Home', to: '/' },
           { icon: 'library_books', title: 'Blogs', to: '/posts' },
           { icon: 'portrait', title: 'Showcases', to: '/showcases' },
+          { icon: 'favorite', title: 'Side Projects', to: '/sideprojects' },
         ],
         itemsExt: [
           { faIcon: 'github', title: 'Kelvin Git', to: 'https://github.com/kelvin2go', target: '_blank' },

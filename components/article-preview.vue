@@ -1,7 +1,8 @@
 <template>
   <v-card raised>
     <nuxt-link
-      :to="{ name: 'posts-id', params: { slug: post.fields.slug, id: post.sys.id }}">
+      :to="{ name: 'posts-slug', params: { slug: post.fields.slug, id: post.sys.id }}"
+      >
       <v-card-media
         class="white--text"
         height="300"

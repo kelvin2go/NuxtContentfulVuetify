@@ -24,7 +24,7 @@
         <div class="swiper-pagination swiper-pagination-bullets"></div>
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="showcase in filtersCase" :key="showcase.id">
-            <Portfolio :portfolio="showcase" />
+            <Portfolio :portfolio="showcase" v-show="showcase.fields.show"/>
           </div>
         </div>
       </div>
@@ -52,7 +52,6 @@
           grabCursor: true,
           centeredSlides: true,
           slidesPerView: 'auto',
-          autoHeight: true,
           coverflowEffect: {
             rotate: 50,
             stretch: 0,
@@ -111,11 +110,15 @@
       return Promise.all([
         client.getEntries({
           'content_type': env.CTF_PROTFOLIO_TYPE_ID,
+          'fields.company[exists]': 'true',
           order: '-fields.date'
         })
       ]).then(([showcases]) => {
         // return data that should be available
         // in the template
+        // const companyCases = showcases.items.filter(function (el) {
+        //   return el.fields.company !== ''
+        // })
         return {
           showcases: showcases.items
         }
