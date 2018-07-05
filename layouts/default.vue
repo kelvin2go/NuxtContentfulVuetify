@@ -71,18 +71,34 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-footer class="blue lighten-4">
-       <v-layout row wrap align-center>
-         <v-flex xs12>
-           <div class="white--text ml-3">
-             Made with
-             <v-icon class="red--text">favorite</v-icon>
-             by <a href="https://github.com/kelvin2go/"> Kelvin Ho</a> - 2018
-           </div>
-         </v-flex>
-       </v-layout>
+    <v-footer class="grey lighten-2" height="320">
+      <v-layout row wrap align-center class="text-md-center">
+        <v-flex xs4 offset-xs4>
+          <v-toolbar-title class="titleText" v-text="title"></v-toolbar-title>
+        </v-flex>
+        <v-flex xs6 offset-xs3>
+          <v-list class="footer-list">
+            <v-list-tile
+              v-for="item in items"
+              :key="item.title"
+              router
+              :to="item.to"
+            >
+              <v-list-tile-content>
+                {{item.title}}
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-flex>
+        <v-flex xs12>
+          <div class="grey--text darken-2 ml-3">
+            Made with
+            <v-icon class="green--text">favorite</v-icon>
+            by <a href="https://github.com/kelvin2go/"> Kelvin Ho</a> - 2018
+          </div>
+        </v-flex>
+      </v-layout>
      </v-footer>
-
   </v-app>
 </template>
 
@@ -133,9 +149,10 @@
 <style lang="scss" scoped>
   #app {
     .toolbar {
+      z-index: 300;
       background: rgba(18, 21, 20, 0.2);
       &.solid{
-        background: rgba(18, 21, 20, 0.85);
+        background: rgba(18, 21, 20, 0.3);
       }
       font-family: Raleway, Helvetica, Arial, sans-serif;
     }
@@ -158,6 +175,36 @@
       }
       .toolbar__title {
         margin-left: 0px;
+        .list__tile__content {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .footer {
+      padding-top: 30px;
+      .titleText{
+        text-align: center;
+        color: #707070;
+        border: 1px solid #707070;
+        padding: 4px;
+      }
+      .footer-list{
+        color: #707070;
+        font-size: 14px;
+        padding-top: 15px;
+        background: none;
+
+        a, a:link, a:visited {
+          color: #707070 !important;
+          text-decoration: none;
+        }
+        .list__tile {
+          .list__tile__content {
+            text-transform: uppercase;
+            flex-direction: unset;
+          }
+        }
       }
     }
 
@@ -171,5 +218,8 @@ body{
 .responsive {
   width: 100%;
   height: auto;
+}
+.navigation-drawer{
+  z-index: 9000 !important;
 }
 </style>

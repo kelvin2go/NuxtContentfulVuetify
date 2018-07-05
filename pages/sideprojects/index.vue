@@ -19,7 +19,7 @@
         </v-flex>
       </v-flex>
 
-      <v-flex xs6 sm4 md4 v-for="showcase in filtersCase" :key="showcase.sys.id">
+      <v-flex xs12 sm6 md6 v-for="showcase in filtersCase" :key="showcase.sys.id">
         <v-card>
           <a :href="showcase.fields.url" target="_blank">
             <v-card-media

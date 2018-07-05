@@ -1,7 +1,7 @@
 <template>
-  <v-card v-if="'fields' in person" width="300" height="450">
+  <v-card v-if="'fields' in person" >
     <v-card-media
-      :src="person.fields.image.fields.file.url + '?fit=scale'"
+      :src="person.fields.image.fields.file.url + '?fit=scale&h=440'"
       height="220px"
       contain
     ></v-card-media>
@@ -40,7 +40,7 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
   h5 {
     font-style: italic;
     font-size: 16px
@@ -48,5 +48,9 @@
   .actions{
     padding-top: 9px;
     color: #C10C00;
+  }
+  .card{
+    min-width: 300px;
+    min-height: 450px;
   }
 </style>

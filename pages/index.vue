@@ -7,14 +7,6 @@
         class="my-5"
         align-center
       >
-        <v-flex xs12 sm4 class="my-3">
-          <div class="text-xs-center">
-            <h2 class="banner-title">The best way to start developing</h2>
-            <span class="banner-subtitle">
-              Tech solution for the business
-            </span>
-          </div>
-        </v-flex>
         <v-flex xs12 class="midContainer">
           <v-container grid-list-xl>
             <v-layout row wrap align-center>
@@ -30,7 +22,7 @@
                     Nuxt.js presets all the configuration needed to make your development of a Vue.js Application Server Rendered more enjoyable.
                     As a framework, Nuxt.js comes with a lot of features to help you in your development between the client side and the server side such as Asynchronous Data, Middleware, Layouts, etc.
                     <v-card-text class="text-xs-center">
-                      <v-btn color="success" href="https://nuxtjs.org/" target="_blank">NUXT</v-btn>
+                      <v-btn outline round color="success" href="https://nuxtjs.org/" target="_blank">NUXT</v-btn>
                     </v-card-text>
                   </v-card-text>
                 </v-card>
@@ -47,7 +39,7 @@
                     Semantic Material Components
                     Be prepared for an armada of specialized components at your disposal. With over 80 in total, there is a solution for any application.
                     <v-card-text class="text-xs-center">
-                      <v-btn color="info" href="https://vuetifyjs.com/en/" target="_blank">Vuetify</v-btn>
+                      <v-btn outline round color="info" href="https://vuetifyjs.com/en/" target="_blank">Vuetify</v-btn>
                     </v-card-text>
                   </v-card-text>
                 </v-card>
@@ -65,7 +57,7 @@
                     nuxt + contentful have no harzzel on server content now. Fast. Flexible. Future-proof. It's everything your CMS isn't.
                     Developers work with the tools they love. Content creators work with the structure they need.
                     <v-card-text class="text-xs-center">
-                      <v-btn color="error" href="https://www.contentful.com/developers/docs/javascript/tutorials/integrate-contentful-with-vue-and-nuxt/" target="_blank">Contentful</v-btn>
+                      <v-btn outline round color="error" href="https://www.contentful.com/developers/docs/javascript/tutorials/integrate-contentful-with-vue-and-nuxt/" target="_blank">Contentful</v-btn>
                     </v-card-text>
                   </v-card-text>
                 </v-card>
@@ -74,9 +66,6 @@
           </v-container>
         </v-flex>
       </v-layout>
-    </section>
-    <section>
-      <Parallax />
     </section>
     <section>
       <v-card>
@@ -90,13 +79,17 @@
                 </span>
               </div>
             </v-flex>
-            <v-flex xs8 md6 sm6 v-for="person in persons" :key="person.id">
+            <v-flex xs10 md5 sm5 offset-xs1 v-for="person in persons" :key="person.id">
               <PersonCard v-if="person" :person="person" />
             </v-flex>
           </v-layout>
         </v-container>
       </v-card>
     </section>
+    <section>
+      <Parallax />
+    </section>
+
   </div>
 
 </template>
@@ -145,6 +138,12 @@ export default {
 }
 
 .midContainer {
+  border-radius: 5px;
+  background-color: #fff;
+  width: 85%;
+  margin: -80px auto 0;
+  box-shadow: 20px 20px 50px rgba(0,0,0,.16);
+  z-index: 200;
   .container {
     min-height: auto;
   }
