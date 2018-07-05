@@ -30,5 +30,6 @@
 <style lang="scss">
   .parallax {
     font-family: Raleway, Helvetica, Arial, sans-serif;
+    z-index: 100;
   }
 </style>

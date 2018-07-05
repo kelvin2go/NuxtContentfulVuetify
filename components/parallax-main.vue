@@ -9,10 +9,11 @@
       <h1 class="main-title text-xs-center">{{mainTitle}}</h1>
       <div class="sub-title mb-3 text-xs-center">{{subTitle}}</div>
       <v-btn
-        class="red lighten-2"
+        class="white"
         dark
         large
         href="/posts"
+        outline round
       >
         {{btnText}}
       </v-btn>
