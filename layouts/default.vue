@@ -10,9 +10,9 @@
         <v-icon>menu</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-content>
+    <v-content class="main">
       <section v-if="$route.path == '/'">
-        <Parallax />
+        <Parallax  class="main"/>
         <nuxt />
       </section>
       <v-container v-else>
@@ -49,7 +49,8 @@
         <v-subheader>Externals</v-subheader>
         <v-list-tile avatar v-for="item in itemsExt" :key="item.title" :href="item.to" :target="item.target">
           <v-list-tile-avatar>
-            <v-icon v-html="item.icon"></v-icon>
+            <v-icon v-if="item.icon" v-html="item.icon"></v-icon>
+            <font-awesome-icon v-if="item.faIcon" :icon="['fab', item.faIcon]" size="2x"/>
           </v-list-tile-avatar>
           <v-list-tile-content>
             <v-list-tile-title v-html="item.title"></v-list-tile-title>
@@ -70,18 +71,34 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-footer class="blue lighten-4">
-       <v-layout row wrap align-center>
-         <v-flex xs12>
-           <div class="white--text ml-3">
-             Made with
-             <v-icon class="red--text">favorite</v-icon>
-             by <a href="https://github.com/kelvin2go/"> Kelvin Ho</a> - 2018
-           </div>
-         </v-flex>
-       </v-layout>
+    <v-footer class="grey lighten-2" height="320">
+      <v-layout row wrap align-center class="text-md-center">
+        <v-flex xs4 offset-xs4>
+          <v-toolbar-title class="titleText" v-text="title"></v-toolbar-title>
+        </v-flex>
+        <v-flex xs6 offset-xs3>
+          <v-list class="footer-list">
+            <v-list-tile
+              v-for="item in items"
+              :key="item.title"
+              router
+              :to="item.to"
+            >
+              <v-list-tile-content>
+                {{item.title}}
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-flex>
+        <v-flex xs12>
+          <div class="grey--text darken-2 ml-3">
+            Made with
+            <v-icon class="green--text">favorite</v-icon>
+            by <a href="https://github.com/kelvin2go/"> Kelvin Ho</a> - 2018
+          </div>
+        </v-flex>
+      </v-layout>
      </v-footer>
-
   </v-app>
 </template>
 
@@ -98,11 +115,12 @@
         scroll: 0,
         items: [
           { icon: 'home', title: 'Home', to: '/' },
-          { icon: 'library_books', title: 'Posts', to: '/posts' },
-          { icon: 'view_module', title: 'Posts example', to: '/posts' },
+          { icon: 'library_books', title: 'Blogs', to: '/posts' },
+          { icon: 'portrait', title: 'Showcases', to: '/showcases' },
+          { icon: 'favorite', title: 'Side Projects', to: '/sideprojects' },
         ],
         itemsExt: [
-          { icon: 'view_module', title: 'Kelvin Git', to: 'https://github.com/kelvin2go', target: '_blank' },
+          { faIcon: 'github', title: 'Kelvin Git', to: 'https://github.com/kelvin2go', target: '_blank' },
         ],
         miniVariant: false,
         right: true,
@@ -123,38 +141,85 @@
     },
     components: {
       Parallax,
-      ParallaxSub,
+      ParallaxSub
     }
   }
 </script>
 
 <style lang="scss" scoped>
-
-  a, a:link, a:visited {
-    color: #63b5f7;
-    text-decoration: none;
-    &#brand {
-      color: #fff;
-      border: 1px solid #fff;
-      padding: 4px;
+  #app {
+    .toolbar {
+      z-index: 300;
+      background: rgba(18, 21, 20, 0.2);
+      &.solid{
+        background: rgba(18, 21, 20, 0.3);
+      }
+      font-family: Raleway, Helvetica, Arial, sans-serif;
     }
-    .toolbar__title {
-      margin-left: 0px;
+    .main {
+      &.parallax {
+        position: absolute;
+        top: 0;
+      }
+      &.content {
+        background: #f4f7f6;
+      }
     }
-  }
-
-  .parallax{
-    position: absolute;
-    top: 0;
-  }
-
-
-
-  #app .toolbar {
-    background: rgba(18, 21, 20, 0.3);
-    &.solid{
-      background: rgba(18, 21, 20, 0.85);
+    a, a:link, a:visited {
+      color: #63b5f7;
+      text-decoration: none;
+      &#brand {
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 4px;
+      }
+      .toolbar__title {
+        margin-left: 0px;
+        .list__tile__content {
+          text-transform: uppercase;
+        }
+      }
     }
-    font-family: Raleway, Helvetica, Arial, sans-serif;
+
+    .footer {
+      padding-top: 30px;
+      .titleText{
+        text-align: center;
+        color: #707070;
+        border: 1px solid #707070;
+        padding: 4px;
+      }
+      .footer-list{
+        color: #707070;
+        font-size: 14px;
+        padding-top: 15px;
+        background: none;
+
+        a, a:link, a:visited {
+          color: #707070 !important;
+          text-decoration: none;
+        }
+        .list__tile {
+          .list__tile__content {
+            text-transform: uppercase;
+            flex-direction: unset;
+          }
+        }
+      }
+    }
+
   }
+</style>
+
+<style lang="scss">
+body{
+  font-family: 'medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif';
+}
+.responsive {
+  width: 100%;
+  height: auto;
+}
+.navigation-drawer{
+  z-index: 9000 !important;
+}
 </style>

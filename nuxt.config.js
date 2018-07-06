@@ -5,10 +5,19 @@ const ctfConfig = getConfigForKeys([
   'CTF_SPACE_ID',
   'CTF_CDA_ACCESS_TOKEN',
   'CTF_CMA_ACCESS_TOKEN',
-  'CTF_PERSON_ID'
+  'CTF_PERSON_ID',
+  'CTF_PROTFOLIO_TYPE_ID'
 ])
-
+console.log(ctfConfig)
 console.log(process.env)
+
+const {createClient} = require('./plugins/contentful')
+const cdaClient = createClient(ctfConfig)
+const cmaContentful = require('contentful-management')
+const cmaClient = cmaContentful.createClient({
+  accessToken: ctfConfig.CTF_CMA_ACCESS_TOKEN
+})
+
 module.exports = {
   /*
   ** Headers of the page
@@ -52,12 +61,14 @@ module.exports = {
     }
   },
   css: [
-    '~/assets/style/app.styl'
+    '~/assets/style/app.styl',
+    'swiper/dist/css/swiper.css'
   ],
   plugins: [
     '~/plugins/contentful',
     '~/plugins/vuetify',
     '~/plugins/fontawesome',
+    { src: '~/plugins/vue-awesome-swiper', ssr: false},
   ],
   generate: {
     routes () {
@@ -75,7 +86,6 @@ module.exports = {
           // map entries to URLs
           ...entries.items.map(entry => `/posts/${entry.fields.slug}`),
           // map all possible tags to URLs
-          ...postType.fields.find(field => field.id === 'tags').items.validations[0].in.map(tag => `/tags/${tag}`)
         ]
       })
     }
@@ -90,6 +100,7 @@ module.exports = {
     CTF_CMA_ACCESS_TOKEN: ctfConfig.CTF_CMA_ACCESS_TOKEN,
     CTF_PERSON_ID: ctfConfig.CTF_PERSON_ID,
     CTF_BLOG_POST_TYPE_ID: ctfConfig.CTF_BLOG_POST_TYPE_ID,
-    CTF_PERSON_TYPE_ID: ctfConfig.CTF_PERSON_TYPE_ID
+    CTF_PERSON_TYPE_ID: ctfConfig.CTF_PERSON_TYPE_ID,
+    CTF_PROTFOLIO_TYPE_ID: ctfConfig.CTF_PROTFOLIO_TYPE_ID
   }
 }
