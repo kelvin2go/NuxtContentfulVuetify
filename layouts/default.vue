@@ -3,6 +3,18 @@
     <v-toolbar dark fixed app :clipped-left="clipped" v-on:scroll="handleScroll" v-bind:class="{solid: this.scroll > 48}">
       <a id="brand" href="/"><v-toolbar-title class="titleText" v-text="title"></v-toolbar-title></a>
       <v-spacer></v-spacer>
+      <v-list-tile
+        router
+        :to="item.to"
+        :key="i"
+        v-for="(item, i) in items"
+        exact
+        class="menuText"
+      >
+        <v-list-tile-content>
+          <v-list-tile-title v-text="item.title"></v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
       <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
@@ -29,6 +41,7 @@
       dark
     >
       <v-list>
+        <v-subheader>KELVIN HO</v-subheader>
         <v-list-tile
           router
           :to="item.to"
@@ -46,20 +59,14 @@
       </v-list>
       <v-divider></v-divider>
       <v-list subheader>
-        <v-subheader>Externals</v-subheader>
-        <v-list-tile avatar v-for="item in itemsExt" :key="item.title" :href="item.to" :target="item.target">
-          <v-list-tile-avatar>
-            <v-icon v-if="item.icon" v-html="item.icon"></v-icon>
-            <font-awesome-icon v-if="item.faIcon" :icon="['fab', item.faIcon]" size="2x"/>
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title v-html="item.title"></v-list-tile-title>
-          </v-list-tile-content>
+        <v-subheader>Contract</v-subheader>
+        <v-list-tile class="ext-icon" avatar v-for="item in itemsExt" :key="item.faIcon" :href="item.to" :target="item.target">
+          <v-icon v-if="item.icon" v-html="item.icon"></v-icon>
+          <font-awesome-icon v-if="item.faIcon" :icon="['fab', item.faIcon]" size="2x"/>
         </v-list-tile>
       </v-list>
       <v-divider></v-divider>
       <v-list subheader>
-        <v-subheader>Actions</v-subheader>
         <v-list-tile>
           <v-btn
             icon
@@ -71,10 +78,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-footer class="grey lighten-2" height="320">
+    <v-footer class="grey lighten-2">
       <v-layout row wrap align-center class="text-md-center">
         <v-flex xs4 offset-xs4>
-          <v-toolbar-title class="titleText" v-text="title"></v-toolbar-title>
+          <a href="/"> <v-toolbar-title class="titleText" v-text="title"></v-toolbar-title></a>
         </v-flex>
         <v-flex xs6 offset-xs3>
           <v-list class="footer-list">
@@ -89,6 +96,11 @@
               </v-list-tile-content>
             </v-list-tile>
           </v-list>
+        </v-flex>
+        <v-flex xs12 text-xs-center>
+            <v-btn flat avatar v-for="item in itemsExt" :key="item.faIcon" :href="item.to" :target="item.target">
+              <font-awesome-icon v-if="item.faIcon" :icon="['fab', item.faIcon]" size="2x"/>
+            </v-btn>
         </v-flex>
         <v-flex xs12>
           <div class="grey--text darken-2 ml-3">
@@ -120,12 +132,16 @@
           { icon: 'favorite', title: 'Side Projects', to: '/sideprojects' },
         ],
         itemsExt: [
-          { faIcon: 'github', title: 'Kelvin Git', to: 'https://github.com/kelvin2go', target: '_blank' },
+          { faIcon: 'facebook', title: '', to: 'https://www.facebook.com/kelvinho84', target: '_blank' },
+          { faIcon: 'github', title: '', to: 'https://github.com/kelvin2go', target: '_blank' },
+          { faIcon: 'twitter', title: '', to: 'https://twitter.com/kelvin_ho84', target: '_blank' },
+          { faIcon: 'slack', title: '@kelvinho84', to: 'https://codeaholics.slack.com/', target: '_blank' },
+          { faIcon: 'pinterest', title: '', to: 'https://pinterest.com/kelvin2go/', target: '_blank' },
         ],
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'NUXTENTFUL'
+        title: 'KELVIN HO'
       }
     },
     methods: {
@@ -148,6 +164,10 @@
 
 <style lang="scss" scoped>
   #app {
+    @media screen and (min-width: 0px) and (max-width: 600px) {
+      .menuText { display: none; }
+    }
+
     .toolbar {
       z-index: 300;
       background: rgba(18, 21, 20, 0.2);
@@ -183,6 +203,7 @@
 
     .footer {
       padding-top: 30px;
+      min-height: 356px;
       .titleText{
         text-align: center;
         color: #707070;
@@ -210,6 +231,9 @@
 
   }
 </style>
+navigation-drawer navigation-drawer--fixed navigation-drawer--is-mobile navigation-drawer--open navigation-drawer--right theme--dark
+navigation-drawer navigation-drawer--fixed navigation-drawer--is-mobile navigation-drawer--mini-variant navigation-drawer--open navigation-drawer--right theme--dark
+
 
 <style lang="scss">
 body{
@@ -221,5 +245,21 @@ body{
 }
 .navigation-drawer{
   z-index: 9000 !important;
+  .list > div:hover{
+    a, i {
+      color: #ff9800 !important;
+    }
+  }
+  .ext-icon{
+    display: inline-block;
+    &:hover{
+      color: #ff9800;
+    }
+  }
+  &.navigation-drawer--mini-variant{
+    .ext-icon{
+      padding: 0 12px;
+    }
+  }
 }
 </style>

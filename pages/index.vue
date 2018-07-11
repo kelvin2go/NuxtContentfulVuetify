@@ -4,60 +4,24 @@
       <v-layout
         column
         wrap
-        class="my-5"
         align-center
       >
         <v-flex xs12 class="midContainer">
           <v-container grid-list-xl>
             <v-layout row wrap align-center>
-              <v-flex xs12 md4>
+              <v-flex xs12 md4 v-for="headline in headlines" :key="headline.title">
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
-                    <img src="/img/nuxt-logo.png" width="40" height="40"/>
+                    <img v-if="headline.icon.src" :src="headline.icon.src" width="40" height="40"/>
+                    <font-awesome-icon class="blue--text lighten-2" v-if="headline.icon.faicon" :icon="headline.icon.faicon" size="2x"/>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
-                    <div class="headline text-xs-center">NUXT.js</div>
+                    <div class="headline text-xs-center">{{headline.title}}</div>
                   </v-card-title>
                   <v-card-text>
-                    Nuxt.js presets all the configuration needed to make your development of a Vue.js Application Server Rendered more enjoyable.
-                    As a framework, Nuxt.js comes with a lot of features to help you in your development between the client side and the server side such as Asynchronous Data, Middleware, Layouts, etc.
-                    <v-card-text class="text-xs-center">
-                      <v-btn outline round color="success" href="https://nuxtjs.org/" target="_blank">NUXT</v-btn>
-                    </v-card-text>
-                  </v-card-text>
-                </v-card>
-              </v-flex>
-              <v-flex xs12 md4>
-                <v-card class="elevation-0 transparent">
-                  <v-card-text class="text-xs-center">
-                    <img src="/img/vuetify-logo.svg" width="40" height="40"/>
-                  </v-card-text>
-                  <v-card-title primary-title class="layout justify-center">
-                    <div class="headline">Vuetify</div>
-                  </v-card-title>
-                  <v-card-text>
-                    Semantic Material Components
-                    Be prepared for an armada of specialized components at your disposal. With over 80 in total, there is a solution for any application.
-                    <v-card-text class="text-xs-center">
-                      <v-btn outline round color="info" href="https://vuetifyjs.com/en/" target="_blank">Vuetify</v-btn>
-                    </v-card-text>
-                  </v-card-text>
-                </v-card>
-              </v-flex>
-              <v-flex xs12 md4>
-                <v-card class="elevation-0 transparent">
-                  <v-card-text class="text-xs-center">
-                    <img src="/img/contentful-logo.svg" width="40" height="40"/>
-                  </v-card-text>
-                  <v-card-title primary-title class="layout justify-center">
-                    <div class="headline">Contentful</div>
-                  </v-card-title>
-                  <v-card-text>
-                    Contentful provides a content infrastructure that enables teams to power content in any digital product.
-                    nuxt + contentful have no harzzel on server content now. Fast. Flexible. Future-proof. It's everything your CMS isn't.
-                    Developers work with the tools they love. Content creators work with the structure they need.
-                    <v-card-text class="text-xs-center">
-                      <v-btn outline round color="error" href="https://www.contentful.com/developers/docs/javascript/tutorials/integrate-contentful-with-vue-and-nuxt/" target="_blank">Contentful</v-btn>
+                    <span v-html="headline.content"> </span>
+                    <v-card-text class="text-xs-center" v-if="headline.icon.title">
+                      <v-btn outline round :color="headline.icon.color" :href="headline.icon.link" target="_blank">{{headline.icon.title}}</v-btn>
                     </v-card-text>
                   </v-card-text>
                 </v-card>
@@ -100,9 +64,7 @@
     <section>
       <Parallax />
     </section>
-
   </div>
-
 </template>
 
 <script>
@@ -132,6 +94,41 @@ export default {
           prevEl: '.swiper-button-prev'
         }
       },
+      headlines: [
+        {
+          title: 'Software Engineer',
+          content: 'I work as Software Engineer Team Lead in GOGOVAN. I have 7+ years working experiences on developing web site, application, platform. Worked on real time ordering van services, editorial CMS, digital media websites. Projects likes: real time driver app,  around 147 million MAU website, 30k concurrent users registration site, 30k registered users e-store, live streaming, multi-platform API',
+          icon : {
+            title: '',
+            src: '/img/kelvin.png',
+            local: '',
+            color: 'success',
+            link: 'https://nuxtjs.org/',
+          }
+        },
+        {
+          title: 'Background',
+          content: 'I was born in Hong Kong 🇭🇰, studying aboard in B.C. Canada 🇨🇦. Finishing up my B.S degree (Computer Science) at University of California, San Diego(UCSD) 🇺🇸. Currently, I have been living in Taiwan 🇹🇼 for 4 years. ',
+          icon : {
+            title: '',
+            src: '',
+            color: 'info',
+            faicon: 'briefcase',
+            link: 'https://vuetifyjs.com/en/',
+          }
+        },
+        {
+          title: 'Working Motto',
+          content: 'Make stuff clean and maintable is alwasy my first prority. Work as team, and responsible. New challenges give me new ideas and motivations, and passion to work and learn new tech. Enjoy discussing programming and sharing latest tech.',
+          icon : {
+            title: '',
+            src: '',
+            faicon: 'user',
+            color: 'error',
+            link: 'https://www.contentful.com/developers/docs/javascript/tutorials/integrate-contentful-with-vue-and-nuxt/',
+          }
+        }
+      ],
       quotes: [
         { text: 'We\'re just enthusiastic about what we do.', author: 'Steve Jobs' },
         { text: 'The further you get away from yourself, the more challenging it is. Not to be in your comfort zone is great fun.', author: 'Benedict Cumberbatch' },
@@ -140,7 +137,8 @@ export default {
         { text: 'Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.', author: 'Albert Einstein'},
         { text: 'If you want to live a happy life, tie it to a goal, not to people or things.', author: 'Albert Einstein'},
         { text: 'If we want to change the world, we change ourselves ... Change the world is maybe Obama\'s job.', author: 'Jack Ma'},
-      ]
+      ],
+
     }
   },
   // `env` is available in the context object
@@ -172,7 +170,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped="">
+<style lang="scss" scoped>
 .padTop{
   padding-top: 456px;
 }
@@ -186,6 +184,9 @@ export default {
   z-index: 200;
   .container {
     min-height: auto;
+  }
+  ul {
+    padding-left: 20px;
   }
 }
 .banner-title{
@@ -222,7 +223,7 @@ export default {
     padding: 40px 60px;
     background-color: transparent!important;
     justify-content: space-around!important;
-    min-height: 480px;
+    min-height: 450px;
     .title {
       font-size: 41px !important;
       font-weight: 300 !important;

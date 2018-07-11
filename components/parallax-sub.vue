@@ -4,10 +4,11 @@
      <div class="headline white--text mb-3 text-xs-center">{{mainTitle}}</div>
      <em>{{subTitle}}</em>
      <v-btn
-       class="blue lighten-2 mt-5"
+       class="mt-5"
        dark
        large
-       href="/posts"
+         outline round
+       href="/showcases"
      >
        {{btnText}}
      </v-btn>
@@ -19,9 +20,9 @@
   export default {
     data () {
       return {
-        mainTitle: 'Web development has never been easier',
-        subTitle: 'Kick-start your application today',
-        btnText: 'Get Started',
+        mainTitle: 'What I LOVE? ',
+        subTitle: '🍿 Movie, MARVEL, 🏸 badminton, 🐟 Aquarium, IOT,  Web platform',
+        btnText: 'KNOW MORE',
       }
     }
   }
@@ -31,5 +32,10 @@
   .parallax {
     font-family: Raleway, Helvetica, Arial, sans-serif;
     z-index: 100;
+    font-size: 28px;
+    .headline{
+      font-size: 38px;
+    }
+
   }
 </style>
