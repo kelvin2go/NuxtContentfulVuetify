@@ -11,7 +11,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "deploy": "push-dir --dir=dist --remote=git@github.com:kelvin2go/kelvin2go.github.io.git --local-branch-name=kelvin2go --cleanup"
+    "deploy": "push-dir --dir=dist --remote=git@github.com:kelvin2go/kelvin2go.github.io.git --branch-name=master --cleanup"
   },
   "dependencies": {
     "contentful": "^5.1.3",
