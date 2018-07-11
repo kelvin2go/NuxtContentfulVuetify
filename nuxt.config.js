@@ -75,7 +75,6 @@ module.exports = {
       id: 'GTM-PL9TSHZ',
       layer: 'dataLayer',
       pageTracking: true,
-      scriptURL: '//kelvinho.js.org'
     }]
   ],
   generate: {
