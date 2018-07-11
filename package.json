@@ -8,12 +8,13 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "generate": "NODE_ENV=production nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
     "deploy": "push-dir --dir=dist --remote=git@github.com:kelvin2go/kelvin2go.github.io.git --local-branch-name=kelvin2go --cleanup --allow-unclean"
   },
   "dependencies": {
+    "@nuxtjs/google-tag-manager": "^2.0.0",
     "contentful": "^5.1.3",
     "contentful-management": "^3.4.0",
     "nuxt": "^1.0.0",

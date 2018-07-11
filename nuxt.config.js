@@ -70,6 +70,13 @@ module.exports = {
     '~/plugins/fontawesome',
     { src: '~/plugins/vue-awesome-swiper', ssr: false},
   ],
+  modules: [
+    ['@nuxtjs/google-tag-manager',{
+      id: 'GTM-PL9TSHZ',
+      layer: 'dataLayer',
+      pageTracking: true,
+    }]
+  ],
   generate: {
     routes () {
       return Promise.all([
