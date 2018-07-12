@@ -2,15 +2,18 @@
   <v-parallax src="/img/hero1.jpg" height="520" >
     <v-layout
       wrap
+      row
       justify-center
+      align-center
+      align-content-center
       class="white--text rw-wrapper text-xs-center"
     >
       <v-flex xs12 md12 >
         <h1 class="main-title text-xs-center">{{mainTitle}}</h1>
       </v-flex>
-      <v-flex xs7 md4>$KelvinHo = </v-flex >
-      <v-flex xs7 md4 class="rw-words rw-words-1 text-xs-center ">
-        <div xs6 v-for="header in subHeader" :key="header"> {{header}} </div>
+      <v-flex xs12 md4 offset-md1 class="text-xs-center"> $KelvinHo = </v-flex >
+      <v-flex xs12 md6 class="rw-words rw-words-1 text-xs-center ">
+        <div xs6 v-for="header in subHeader" :key="header">{{header}}</div>
       </v-flex>
       <v-flex xs12 md12 >
         <v-btn
@@ -70,20 +73,14 @@
       font-style: italic;
     }
 
-    @media screen and (min-width: 0px) and (max-width: 600px) {
-      .rw-wrapper > div { height: 70px; }
-    }
-
-
     .rw-wrapper {
     	position: relative;
       margin: 30px auto 0 auto;
     	text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
       font-size: 38px;
-      margin-top: 110px;
 
       > div {
-        // min-height: 50px;
+        min-height: 50px;
       }
 
       .rw-words{
@@ -170,5 +167,28 @@
           100% { opacity: 0; }
       }
     }
+
+    @media screen and (min-width: 0px) and (max-width: 860px) {
+      .rw-wrapper {
+        > div {
+          height: 90px;
+        }
+        .rw-words{
+          div {
+            left: 40%;
+          }
+        }
+      }
+    }
+    @media screen and (min-width: 0px) and (max-width: 400px) {
+      .rw-wrapper {
+        .rw-words{
+          div {
+            left: 28%;
+          }
+        }
+      }
+    }
+
   }
 </style>
