@@ -205,7 +205,9 @@
       padding-top: 30px;
       min-height: 356px;
       .footer-btn{
-        min-width: 38px;
+        .btn {
+          min-width: 38px;
+        }
       }
       .titleText{
         text-align: center;
