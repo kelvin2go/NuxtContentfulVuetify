@@ -1,28 +1,28 @@
 <template>
   <v-parallax src="/img/hero1.jpg" height="520" >
     <v-layout
-      column
-      align-center
+      wrap
       justify-center
-      class="white--text"
+      class="white--text rw-wrapper text-xs-center"
     >
-      <h1 class="main-title text-xs-center">{{mainTitle}}</h1>
-      <div class="rw-wrapper sub-title mb-3 text-xs-center">
-        <div>I am ${</div>
-        <div class="rw-words rw-words-1">
-          <div v-for="(header,index) in subHeader" :key="index"> {{header}} </div>
-        </div>
-        <div>}</div>
-      </div>
-      <v-btn
-        class="white"
-        dark
-        large
-        href="/posts"
-        outline round
-      >
-        {{btnText}}
-      </v-btn>
+      <v-flex xs12 md12 >
+        <h1 class="main-title text-xs-center">{{mainTitle}}</h1>
+      </v-flex>
+      <v-flex xs7 md4>$KelvinHo = </v-flex >
+      <v-flex xs7 md4 class="rw-words rw-words-1 text-xs-center ">
+        <div xs6 v-for="header in subHeader" :key="header"> {{header}} </div>
+      </v-flex>
+      <v-flex xs12 md12 >
+        <v-btn
+          class="white"
+          dark
+          large
+          href="/posts"
+          outline round
+        >
+          {{btnText}}
+        </v-btn>
+      </v-flex>
     </v-layout>
   </v-parallax>
 </template>
@@ -32,7 +32,7 @@
     data () {
       return {
         mainTitle: 'Hello world',
-        subTitle: 'Kelvin Ho,👨‍💻 software engineer,🌐 web and app developer,📦 technology fans,💻 computer geek,🔠 codealholic,👨‍👩‍👦‍👦 father ',
+        subTitle: 'software engineer 👨‍💻, web developer 🌐, tech fans 📦, computer geek 💻, codealholic 🔠, father 👨‍👩‍👦‍👦 ',
         btnText: 'FOLLOW ME',
       }
     },
@@ -70,41 +70,36 @@
       font-style: italic;
     }
 
+    @media screen and (min-width: 0px) and (max-width: 600px) {
+      .rw-wrapper > div { height: 70px; }
+    }
+
+
     .rw-wrapper {
-      width: 90%;
     	position: relative;
       margin: 30px auto 0 auto;
-      padding-top: 10px;
     	text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
-      display: flex;
+      font-size: 38px;
+      margin-top: 110px;
+
       > div {
-      	font-size: 38px;
-      	font-weight: normal;
-        flex: 2;
-      }
-      > div:nth-child(1) {
-        width: 200px;
-        flex: 1;
-      }
-      > div:last-child {
-        width: 50px;
-        flex: 2;
+        // min-height: 50px;
       }
 
       .rw-words{
-        display: table-cell;
-      	text-indent: 10px;
+        position: relative;
 
-        div{
+        div {
         	opacity: 0;
         	white-space: nowrap;
-          flex: 1;
+          position: absolute;
+          top:0;
+          left: 0;
+          font-size: 28px;
         }
       }
 
       .rw-words-1 div{
-        display: flex;
-        position: absolute;
       	opacity: 0;
       	color: #9cdede;
       	-webkit-animation: rotateWord 35s linear infinite 0s;

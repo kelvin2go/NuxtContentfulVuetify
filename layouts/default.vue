@@ -97,10 +97,10 @@
             </v-list-tile>
           </v-list>
         </v-flex>
-        <v-flex xs12 text-xs-center>
-            <v-btn flat avatar v-for="item in itemsExt" :key="item.faIcon" :href="item.to" :target="item.target">
-              <font-awesome-icon v-if="item.faIcon" :icon="['fab', item.faIcon]" size="2x"/>
-            </v-btn>
+        <v-flex xs12 text-xs-center class="footer-btn">
+          <v-btn small flat avatar v-for="item in itemsExt" :key="item.faIcon" :href="item.to" :target="item.target">
+            <font-awesome-icon v-if="item.faIcon" :icon="['fab', item.faIcon]" size="2x"/>
+          </v-btn>
         </v-flex>
         <v-flex xs12>
           <div class="grey--text darken-2 ml-3">
@@ -204,6 +204,9 @@
     .footer {
       padding-top: 30px;
       min-height: 356px;
+      .footer-btn{
+        min-width: 38px;
+      }
       .titleText{
         text-align: center;
         color: #707070;
