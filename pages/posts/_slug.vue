@@ -15,7 +15,7 @@
         // client.getEntry( params.id )
         client.getEntries({
           'content_type': env.CTF_BLOG_POST_TYPE_ID,
-          'sys.id[in]': params.id
+          'sys.id[slug]': params.slug
         })
       ]).then(([post]) => {
         // return data that should be available
