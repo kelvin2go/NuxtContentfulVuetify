@@ -119,7 +119,7 @@ export default {
         },
         {
           title: 'Working Motto',
-          content: 'Organize clean project is alwasy my first prority. Work as team, and responsible. New challenges give me new ideas and motivations, and passion to work and learn new tech. Enjoy discussing programming and sharing latest tech.',
+          content: 'Organizing clean project is alwasy my first prority. Work as team, and responsible. New challenges give me new ideas and motivations, and passion to work and learn new tech. Enjoy discussing programming and sharing latest tech.',
           icon : {
             title: '',
             src: '',
