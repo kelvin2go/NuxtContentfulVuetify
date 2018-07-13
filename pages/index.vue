@@ -53,7 +53,7 @@
     <section>
       <v-card>
         <v-container fluid grid-list-md>
-          <v-layout row wrap>
+          <v-layout row wrap justify-center>
             <v-flex xs10 md4 sm4 offset-xs1 v-for="person in persons" :key="person.id">
               <PersonCard v-if="person" :person="person" />
             </v-flex>

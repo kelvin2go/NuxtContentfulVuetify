@@ -168,7 +168,7 @@
       }
     }
 
-    @media screen and (min-width: 0px) and (max-width: 860px) {
+    @media screen and (min-width: 0px) and (max-width: 960px) {
       .rw-wrapper {
         > div {
           height: 90px;
