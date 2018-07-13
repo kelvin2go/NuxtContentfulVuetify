@@ -60,6 +60,13 @@ module.exports = {
       }
     }
   },
+  modules: [
+   ['@nuxtjs/google-tag-manager', {
+    id: 'GTM-PL9TSHZ',
+    layer: 'dataLayer',
+    pageTracking: true
+  }],
+ ],
   css: [
     '~/assets/style/app.styl',
     'swiper/dist/css/swiper.css'
