@@ -112,7 +112,7 @@
     font-weight: 400;
     color: rgba(0,0,0,.54)!important
   }
-  .card{
+  .v-card{
     width: 100%;
     a {
       text-decoration: none;
@@ -125,7 +125,7 @@
       position: absolute;
 
     }
-    .card__title {
+    .v-card__title {
       padding: 0;
       font-size: 15px;
     }

@@ -22,14 +22,14 @@
       <v-flex xs12 sm6 md6 v-for="showcase in filtersCase" :key="showcase.sys.id">
         <v-card>
           <a :href="showcase.fields.url" target="_blank">
-            <v-card-media
+            <v-img
               v-if="showcase.fields.heroImage"
               class="white--text"
               height="340"
               width="360"
               :src="showcase.fields.heroImage.fields.file.url + '?fit=scale&w=720'"
             >
-            </v-card-media>
+            </v-img>
           </a>
           <v-card-title primary-title>
             <div>

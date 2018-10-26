@@ -1,4 +1,5 @@
-const {getConfigForKeys} = require('./lib/config.js')
+import { getConfigForKeys } from './lib/config.js'
+
 const ctfConfig = getConfigForKeys([
   'CTF_BLOG_POST_TYPE_ID',
   'CTF_PERSON_TYPE_ID',
@@ -42,15 +43,10 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    /*
-    ** Run ESLint on save
-    */
-    vendor: [
-      '~/plugins/vuetify.js'
-    ],
     extractCSS: true,
-    extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
+    transpile: [/^vuetify/],
+    extend (config, {isDev}) {
+      if (isDev && process.client) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -61,21 +57,24 @@ module.exports = {
     }
   },
   modules: [
-   ['@nuxtjs/google-tag-manager', {
-    id: 'GTM-PL9TSHZ',
-    layer: 'dataLayer',
-    pageTracking: true
-  }],
- ],
+    ['@nuxtjs/google-tag-manager', {
+      id: 'GTM-PL9TSHZ',
+      layer: 'dataLayer',
+      pageTracking: true
+    }]
+  ],
   css: [
-    '~/assets/style/app.styl',
+    '~assets/style/app.styl',
     'swiper/dist/css/swiper.css'
   ],
   plugins: [
     '~/plugins/contentful',
     '~/plugins/vuetify',
     '~/plugins/fontawesome',
-    { src: '~/plugins/vue-awesome-swiper', ssr: false},
+    {
+      src: '~/plugins/vue-awesome-swiper',
+      ssr: false
+    }
   ],
   generate: {
     routes () {
@@ -88,13 +87,13 @@ module.exports = {
         cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
           .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
       ])
-      .then(([entries, postType]) => {
-        return [
+        .then(([entries, postType]) => {
+          return [
           // map entries to URLs
-          ...entries.items.map(entry => `/posts/${entry.fields.slug}`),
+            ...entries.items.map(entry => `/posts/${entry.fields.slug}`)
           // map all possible tags to URLs
-        ]
-      })
+          ]
+        })
     }
   },
   /*

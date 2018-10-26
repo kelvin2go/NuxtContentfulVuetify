@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 
-Vue.use(Vuetify, { theme: {
-  primary: 'red',
-  secondary: 'purple',
-  accent: '#ce93d8',
-  info: '#0D47A1',
-  warning: '#ffb300',
-  error: '#B71C1C',
-  success: '#2E7D32'
-}})
+Vue.use(Vuetify, {
+  options: {
+    minifyTheme: function (css) {
+      return process.env.NODE_ENV === 'production'
+        ? css.replace(/[\s|\r\n|\r|\n]/g, '')
+        : css
+    }
+  }
+})

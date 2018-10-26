@@ -1,5 +1,5 @@
 <template>
-  <v-parallax src="/img/hero1.jpg" height="520" >
+  <v-parallax class="parallaxMain" src="/img/hero1.jpg" height="520" >
     <v-layout
       wrap
       row
@@ -13,15 +13,16 @@
       </v-flex>
       <v-flex xs12 md4 offset-md1 class="text-xs-center"> $KelvinHo = </v-flex >
       <v-flex xs12 md6 class="rw-words rw-words-1 text-xs-center ">
-        <div xs6 v-for="header in subHeader" :key="header">{{header}}</div>
+        <v-flex xs6 v-for="header in subHeader" :key="header">{{header}}</v-flex>
       </v-flex>
       <v-flex xs12 md12 >
         <v-btn
-          class="white"
+          class="white white--text"
           dark
           large
           href="/posts"
           outline round
+
         >
           {{btnText}}
         </v-btn>
@@ -47,10 +48,13 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  .parallax {
+<style lang="stylus" scoped>
+  .parallaxMain {
     font-family: Raleway, Helvetica, Arial, sans-serif;
     width: 100%;
+    z-index: 100;
+    position: absolute;
+    top: -62px;
     .main-title {
       letter-spacing: 6px;
       text-align: center;
