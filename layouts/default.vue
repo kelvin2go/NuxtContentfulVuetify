@@ -131,6 +131,7 @@
           { icon: 'home', title: 'Home', to: '/' },
           { icon: 'library_books', title: 'Blogs', to: '/posts' },
           { icon: 'portrait', title: 'Showcases', to: '/showcases' },
+          { icon: 'gamepad', title: 'Playground', to: '/playground' },
           { icon: 'favorite', title: 'Side Projects', to: '/sideprojects' },
         ],
         itemsExt: [
