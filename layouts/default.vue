@@ -1,8 +1,20 @@
 <template>
-  <v-app>
+  <v-app id="app">
     <v-toolbar dark fixed app :clipped-left="clipped" v-on:scroll="handleScroll" v-bind:class="{solid: this.scroll > 48}">
       <a id="brand" href="/"><v-toolbar-title class="titleText" v-text="title"></v-toolbar-title></a>
       <v-spacer></v-spacer>
+      <v-list-tile
+        router
+        :to="item.to"
+        :key="i"
+        v-for="(item, i) in items"
+        exact
+        class="menuText white--text"
+      >
+        <v-list-tile-content>
+          <v-list-tile-title class="white--text" v-text="item.title"></v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
       <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
@@ -12,12 +24,13 @@
     </v-toolbar>
     <v-content class="main">
       <section v-if="$route.path == '/'">
-        <Parallax  class="main"/>
+        <Parallax class="mainpage"/>
         <nuxt />
       </section>
       <v-container v-else>
         <nuxt />
       </v-container>
+
     </v-content>
     <v-navigation-drawer
       :mini-variant.sync="miniVariant"
@@ -74,7 +87,7 @@
     <v-footer class="grey lighten-2" height="320">
       <v-layout row wrap align-center class="text-md-center">
         <v-flex xs4 offset-xs4>
-          <v-toolbar-title class="titleText" v-text="title"></v-toolbar-title>
+          <a href="/"> <v-toolbar-title class="titleText" text-color="white" v-text="title"></v-toolbar-title></a>
         </v-flex>
         <v-flex xs6 offset-xs3>
           <v-list class="footer-list">
@@ -83,6 +96,7 @@
               :key="item.title"
               router
               :to="item.to"
+              class="white--text"
             >
               <v-list-tile-content>
                 {{item.title}}
@@ -103,8 +117,8 @@
 </template>
 
 <script>
-  import Parallax from '~/components/parallax-main.vue'
-  import ParallaxSub from '~/components/parallax-sub.vue'
+  import Parallax from '@/components/parallax-main.vue'
+  import ParallaxSub from '@/components/parallax-sub.vue'
 
   export default {
     data () {
@@ -146,72 +160,80 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  #app {
-    .toolbar {
-      z-index: 300;
-      background: rgba(18, 21, 20, 0.2);
-      &.solid{
-        background: rgba(18, 21, 20, 0.3);
-      }
-      font-family: Raleway, Helvetica, Arial, sans-serif;
-    }
-    .main {
-      &.parallax {
-        position: absolute;
-        top: 0;
-      }
-      &.content {
-        background: #f4f7f6;
-      }
-    }
-    a, a:link, a:visited {
-      color: #63b5f7;
-      text-decoration: none;
-      &#brand {
-        color: #fff;
-        border: 1px solid #fff;
-        padding: 4px;
-      }
-      .toolbar__title {
-        margin-left: 0px;
-        .list__tile__content {
-          text-transform: uppercase;
-        }
-      }
-    }
-
-    .footer {
-      padding-top: 30px;
-      .titleText{
-        text-align: center;
-        color: #707070;
-        border: 1px solid #707070;
-        padding: 4px;
-      }
-      .footer-list{
-        color: #707070;
-        font-size: 14px;
-        padding-top: 15px;
-        background: none;
-
-        a, a:link, a:visited {
-          color: #707070 !important;
-          text-decoration: none;
-        }
-        .list__tile {
-          .list__tile__content {
-            text-transform: uppercase;
-            flex-direction: unset;
-          }
-        }
-      }
-    }
-
+<style lang="stylus">
+#app {
+  @media screen and (min-width: 0px) and (max-width: 600px) {
+    .menuText { display: none; }
   }
-</style>
+  .v-toolbar {
+    z-index: 300;
+    background: rgba(18, 21, 20, 0.55);
+    &.solid{
+      background: rgba(18, 21, 20, 0.4);
+    }
+    font-family: Raleway, Helvetica, Arial, sans-serif;
+  }
+  .mainpage {
+    padding: 0 !important;
+    .v-parallax {
+      position: absolute;
+      top: 0;
+    }
+    .content {
+      background: #f4f7f6;
+    }
+  }
+  a, a:link, a:visited {
+    color: #63b5f7;
+    text-decoration: none;
+    &#brand {
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 4px;
+    }
+    .toolbar__title {
+      margin-left: 0px;
+      .list__tile__content {
+        text-transform: uppercase;
+      }
+    }
+  }
 
-<style lang="scss">
+  .v-footer {
+    padding-top: 30px;
+    min-height: 356px;
+    .footer-btn{
+      .btn {
+        min-width: 38px;
+      }
+    }
+    .titleText{
+      text-align: center;
+      color: #707070;
+      border: 1px solid #707070;
+      padding: 4px;
+    }
+    .footer-list{
+      color: #707070;
+      font-size: 14px;
+      padding-top: 15px;
+      background: none;
+
+      a, a:link, a:visited {
+        color: #707070 !important;
+        text-decoration: none;
+      }
+      .v-list__tile {
+        .v-list__tile__content {
+          text-transform: uppercase;
+          flex-direction: unset;
+        }
+      }
+    }
+  }
+
+}
+
 body{
   font-family: 'medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif';
 }

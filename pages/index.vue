@@ -1,5 +1,5 @@
 <template>
-  <div class="padTop">
+  <div class="sec-container">
     <section>
       <v-layout
         column
@@ -106,10 +106,10 @@
 </template>
 
 <script>
-import {createClient} from '~/plugins/contentful.js'
-import AppLogo from '~/components/AppLogo.vue'
-import Parallax from '~/components/parallax-sub.vue'
-import PersonCard from '~/components/person-card.vue'
+import {createClient} from '@/plugins/contentful.js'
+import AppLogo from '@/components/AppLogo.vue'
+import Parallax from '@/components/parallax-sub.vue'
+import PersonCard from '@/components/person-card.vue'
 
 const client = createClient()
 
@@ -172,11 +172,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped="">
-.padTop{
-  padding-top: 456px;
+<style lang="scss" scoped>
+.sec-container{
+  margin-top: 520px;
+  
 }
-
 .midContainer {
   border-radius: 5px;
   background-color: #fff;

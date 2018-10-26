@@ -3,13 +3,13 @@
     <nuxt-link
       :to="{ name: 'posts-slug', params: { slug: post.fields.slug, id: post.sys.id }}"
       >
-      <v-card-media
+      <v-img
         class="white--text"
         height="300"
         :src="post.fields.heroImage.fields.file.url + '?fit=scale&w=1000&h=562'"
         :srcset="`${post.fields.heroImage.fields.file.url}?w=350&h=196&fit=fill 350w, ${post.fields.heroImage.fields.file.url}?w=1000&h=562&fit=fill 1000w, ${post.fields.heroImage.fields.file.url}?w=2000&h=1125&fit=fill 2000w`"
       >
-      </v-card-media>
+      </v-img>
       <v-card-title primary-title>
         <div>
           <h3 class="headline mb-0">{{ post.fields.title }}</h3>
@@ -65,8 +65,6 @@
   }
   .thumbnail {
     margin-bottom: 1em;
-  }
-  .date {
   }
   .title {
     text-decoration: none;

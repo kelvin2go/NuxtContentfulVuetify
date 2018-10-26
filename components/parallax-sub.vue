@@ -1,13 +1,14 @@
 <template>
   <v-parallax src="/img/hero3.jpg" height="380">
    <v-layout column align-center justify-center>
-     <div class="headline white--text mb-3 text-xs-center">{{mainTitle}}</div>
+     <div class="display-3 white--text mb-3 text-xs-center">{{mainTitle}}</div>
      <em>{{subTitle}}</em>
      <v-btn
-       class="blue lighten-2 mt-5"
+       class="mt-5 white white--text"
        dark
        large
-       href="/posts"
+       outline round
+       href="/showcases"
      >
        {{btnText}}
      </v-btn>
@@ -28,8 +29,9 @@
 </script>
 
 <style lang="scss">
-  .parallax {
+  .v-parallax {
     font-family: Raleway, Helvetica, Arial, sans-serif;
     z-index: 100;
+    font-size: 28px;
   }
 </style>
