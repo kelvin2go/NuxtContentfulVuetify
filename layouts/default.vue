@@ -8,14 +8,8 @@
       v-on:scroll="handleScroll"
       v-bind:class="{solid: this.scroll > 48}"
     >
-      <a
-        id="brand"
-        href="/"
-      >
-        <v-toolbar-title
-          class="titleText"
-          v-text="title"
-        ></v-toolbar-title>
+      <a id="brand" href="/">
+        <v-toolbar-title class="titleText" v-text="title"></v-toolbar-title>
       </a>
       <v-spacer></v-spacer>
       <template v-for="(item, i) in items">
@@ -28,10 +22,7 @@
           class="menuText white--text"
         >
           <v-list-tile-content>
-            <v-list-tile-title
-              class="white--text"
-              v-text="item.title"
-            ></v-list-tile-title>
+            <v-list-tile-title class="white--text" v-text="item.title"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <a
@@ -45,10 +36,7 @@
           </div>
         </a>
       </template>
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
+      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
       </v-btn>
     </v-toolbar>
@@ -60,7 +48,6 @@
       <v-container v-else>
         <nuxt />
       </v-container>
-
     </v-content>
     <v-navigation-drawer
       :mini-variant.sync="miniVariant"
@@ -74,13 +61,7 @@
       <v-list>
         <v-subheader>KELVIN HO</v-subheader>
         <template v-for="(item, i) in items">
-          <v-list-tile
-            v-if="item.to"
-            router
-            :to="item.to"
-            :key="i"
-            exact
-          >
+          <v-list-tile v-if="item.to" router :to="item.to" :key="i" exact>
             <v-list-tile-action>
               <v-icon v-html="item.icon"></v-icon>
             </v-list-tile-action>
@@ -95,10 +76,7 @@
             class="v-list__tile v-list__tile--link theme--dark"
           >
             <div class="v-list__tile__action">
-              <v-icon
-                v-if="item.icon"
-                v-html="item.icon"
-              ></v-icon>
+              <v-icon v-if="item.icon" v-html="item.icon"></v-icon>
             </div>
             <div class="v-list__tile__content">
               <div class="v-list__tile__title">{{item.title}}</div>
@@ -117,15 +95,8 @@
           :target="item.target"
         >
           <v-list-tile-avatar>
-            <v-icon
-              v-if="item.icon"
-              v-html="item.icon"
-            ></v-icon>
-            <font-awesome-icon
-              v-if="item.faIcon"
-              :icon="['fab', item.faIcon]"
-              size="2x"
-            />
+            <v-icon v-if="item.icon" v-html="item.icon"></v-icon>
+            <font-awesome-icon v-if="item.faIcon" :icon="['fab', item.faIcon]" size="2x" />
           </v-list-tile-avatar>
           <v-list-tile-content>
             <v-list-tile-title v-html="item.title"></v-list-tile-title>
@@ -135,42 +106,21 @@
       <v-divider></v-divider>
       <v-list subheader>
         <v-list-tile>
-          <v-btn
-            icon
-            @click="miniVariant = !miniVariant"
-          >
+          <v-btn icon @click="miniVariant = !miniVariant">
             <v-icon>photo_size_select_small</v-icon>
           </v-btn>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
 
-    <v-footer
-      class="grey lighten-2"
-      height="320"
-    >
-      <v-layout
-        row
-        wrap
-        align-center
-        class="text-md-center"
-      >
-        <v-flex
-          xs4
-          offset-xs4
-        >
+    <v-footer class="grey lighten-2" height="320">
+      <v-layout row wrap align-center class="text-md-center">
+        <v-flex xs4 offset-xs4>
           <a href="/">
-            <v-toolbar-title
-              class="titleText"
-              text-color="white"
-              v-text="title"
-            ></v-toolbar-title>
+            <v-toolbar-title class="titleText" text-color="white" v-text="title"></v-toolbar-title>
           </a>
         </v-flex>
-        <v-flex
-          xs6
-          offset-xs3
-        >
+        <v-flex xs6 offset-xs3>
           <v-list class="footer-list">
             <template v-for="item in items">
               <v-list-tile
@@ -180,9 +130,7 @@
                 :to="item.to"
                 class="white--text"
               >
-                <v-list-tile-content>
-                  {{item.title}}
-                </v-list-tile-content>
+                <v-list-tile-content>{{item.title}}</v-list-tile-content>
               </v-list-tile>
               <a
                 v-if="item.extto"
@@ -195,11 +143,7 @@
             </template>
           </v-list>
         </v-flex>
-        <v-flex
-          xs12
-          text-xs-center
-          class="footer-btn"
-        >
+        <v-flex xs12 text-xs-center class="footer-btn">
           <template v-for="item in itemsExt">
             <v-btn
               v-if="item.to"
@@ -210,19 +154,14 @@
               :href="item.to"
               :target="item.target"
             >
-              <font-awesome-icon
-                v-if="item.faIcon"
-                :icon="['fab', item.faIcon]"
-                size="2x"
-              />
+              <font-awesome-icon v-if="item.faIcon" :icon="['fab', item.faIcon]" size="2x" />
             </v-btn>
           </template>
         </v-flex>
         <v-flex xs12>
           <div class="grey--text darken-2 ml-3">
-            Made with
-            <v-icon class="green--text">favorite</v-icon>
-            by <a href="https://github.com/kelvin2go/"> Kelvin Ho</a> - 2018
+            by
+            <a href="https://github.com/kelvin2go/">Kelvin Ho</a> - 2020
           </div>
         </v-flex>
       </v-layout>
@@ -231,52 +170,76 @@
 </template>
 
 <script>
-import Parallax from '@/components/parallax-main.vue'
-import ParallaxSub from '@/components/parallax-sub.vue'
+import Parallax from "@/components/parallax-main.vue";
+import ParallaxSub from "@/components/parallax-sub.vue";
 
 export default {
-  data () {
+  data() {
     return {
       clipped: false,
       drawer: false,
       fixed: false,
       scroll: 0,
       items: [
-        { icon: 'home', title: 'Home', to: '/' },
-        { icon: 'library_books', title: 'Blogs', to: '/posts' },
-        { icon: 'portrait', title: 'Showcases', to: '/showcases' },
-        { icon: 'gamepad', title: 'Playground', to: '/playground' },
-        { icon: 'favorite', title: 'Side Projects', to: '/sideprojects' }
+        { icon: "home", title: "Home", to: "/" },
+        { icon: "library_books", title: "Blogs", to: "/posts" },
+        { icon: "portrait", title: "Showcases", to: "/showcases" },
+        { icon: "favorite", title: "Side Projects", to: "/sideprojects" },
       ],
       itemsExt: [
-        { faIcon: 'facebook', title: '', to: 'https://www.facebook.com/kelvinho84', target: '_blank' },
-        { faIcon: 'github', title: '', to: 'https://github.com/kelvin2go', target: '_blank' },
-        { faIcon: 'twitter', title: '', to: 'https://twitter.com/kelvin_ho84', target: '_blank' },
-        { faIcon: 'slack', title: '@kelvinho84', to: 'https://codeaholics.slack.com/', target: '_blank' },
-        { faIcon: 'pinterest', title: '', to: 'https://pinterest.com/kelvin2go/', target: '_blank' }
+        {
+          faIcon: "facebook",
+          title: "",
+          to: "https://www.facebook.com/kelvinho84",
+          target: "_blank",
+        },
+        {
+          faIcon: "github",
+          title: "",
+          to: "https://github.com/kelvin2go",
+          target: "_blank",
+        },
+        {
+          faIcon: "twitter",
+          title: "",
+          to: "https://twitter.com/kelvin_ho84",
+          target: "_blank",
+        },
+        {
+          faIcon: "slack",
+          title: "@kelvinho84",
+          to: "https://codeaholics.slack.com/",
+          target: "_blank",
+        },
+        {
+          faIcon: "pinterest",
+          title: "",
+          to: "https://pinterest.com/kelvin2go/",
+          target: "_blank",
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'KELVIN HO'
-    }
+      title: "KELVIN HO",
+    };
   },
   methods: {
-    handleScroll () {
-      this.scroll = window.scrollY
-    }
+    handleScroll() {
+      this.scroll = window.scrollY;
+    },
   },
-  beforeMount () {
-    window.addEventListener('scroll', this.handleScroll)
+  beforeMount() {
+    window.addEventListener("scroll", this.handleScroll);
   },
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.handleScroll)
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   components: {
     Parallax,
-    ParallaxSub
-  }
-}
+    ParallaxSub,
+  },
+};
 </script>
 
 <style lang="stylus">
